@@ -1,0 +1,105 @@
+# .gitignore for Data Science Projects
+
+# =========================
+# Python & Environment
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# =========================
+# IDE & Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.pydevproject
+.sublime-project
+.sublime-workspace
+
+# =========================
+# Jupyter Notebook
+# =========================
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+.jupyter
+
+# =========================
+# Data & Temporary Files
+# =========================
+*.csv
+*.xlsx
+*.xls
+!StudentsPerformance.csv
+*.tmp
+*.temp
+*.log
+.cache/
+
+# =========================
+# LaTeX
+# =========================
+*.aux
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.out
+*.toc
+*.log
+*.run.xml
+*.bcf
+*.synctex.gz
+*.pdf
+!main.pdf
+
+# =========================
+# OS Files
+# =========================
+Thumbs.db
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# =========================
+# Secrets & Credentials
+# =========================
+.env
+.env.local
+secrets.json
+credentials.json
+config.ini
+
+# =========================
+# Project Specific
+# =========================
+results/
+models/
+checkpoints/
+exports/
+*.pkl
+*.joblib

@@ -1,0 +1,26 @@
+# Machine Learning & Data Science Dependenciespandas==1.3.5
+
+pandas>=1.5.0          # Data manipulation and analysisnumpy==1.21.6
+
+numpy>=1.23.0          # Numerical computingscikit-learn==1.0.2
+
+scikit-learn>=1.2.0    # Machine learning libraryxgboost==1.5.2
+
+xgboost>=1.7.5         # Gradient boosting librarymatplotlib==3.5.1
+
+matplotlib>=3.6.0      # Plotting and visualizationseaborn==0.11.2
+
+seaborn>=0.12.0        # Statistical data visualizationjupyter==1.0.0
+
+ipython==7.31.0
+
+# Jupyter & Interactive Computingscipy==1.7.3
+
+jupyter>=1.0.0         # Jupyter notebook
+ipython>=8.0.0         # Interactive Python
+scipy>=1.9.0           # Scientific computing
+
+# Optional: For advanced features
+# shap>=0.41.0          # Model explanation tool
+# lightgbm>=3.3.5       # Alternative gradient boosting
+# optuna>=3.0.0         # Hyperparameter optimization
