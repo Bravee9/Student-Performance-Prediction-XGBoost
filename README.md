@@ -1,218 +1,209 @@
-# 📚 Student Performance Prediction - Machine Learning
+# 📚 Dự Đoán Kết Quả Học Tập của Học Sinh - Học Máy
 
-> **XGBoost Regression for Predicting Student Math Achievement**
+> **Hồi Quy XGBoost để Dự Đoán Thành Tích Toán của Học Sinh**
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-## 🎯 Project Overview
+## 🎯 Tổng Quan Dự Án
 
-A machine learning project predicting student mathematics achievement using demographic and socioeconomic factors. 
+Một dự án học máy dự đoán thành tích toán học của học sinh dựa trên các yếu tố nhân khẩu học và kinh tế-xã hội.
 
-**Dataset**: 1,000 students, 8 features  
-**Models**: Linear Regression (baseline) vs XGBoost (main)  
-**Results**: XGBoost R² = 0.26, 13% improvement over baseline
+**Bộ dữ liệu**: 1.000 học sinh, 8 đặc trưng  
+**Mô hình**: Hồi Quy Tuyến Tính (cơ sở) vs XGBoost (chính)  
+**Kết quả**: XGBoost R² = 0,26, cải thiện 13% so với cơ sở
 
-### Key Findings
-- **Top Predictor**: Lunch status/SES (34.2% importance)
-- **Education Effect**: Parental education (21.5%)
-- **Intervention**: Test preparation (18.9%)
+### Những Phát Hiện Chính
+- **Yếu Tố Dự Báo Hàng Đầu**: Tình trạng bữa trưa/KXH (34,2% quan trọng)
+- **Ảnh Hưởng Giáo Dục**: Trình độ học vấn cha mẹ (21,5%)
+- **Can Thiệp**: Khóa luyện thi (18,9%)
 
 ---
 
-## 🏫 Course Information
+## 🏫 Thông Tin Khóa Học
 
-| Field | Details |
+| Trường | Chi Tiết |
 |-------|---------|
-| **Course** | MAT3533 - 1 K68A3 - Học Máy |
-| **University** | Hanoi University of Science |
-| **Semester** | Fall 2025-2026 |
-| **Author** | Bùi Quang Chiến |
-| **Student ID** | 23001837 |
+| **Khóa Học** | MAT3533 - 1 K68A3 - Học Máy |
+| **Trường Đại Học** | Đại Học Khoa Học Tự Nhiên, Hà Nội |
+| **Học Kỳ** | Fall 2025-2026 |
+| **Tác Giả** | Bùi Quang Chiến |
+| **Mã Sinh Viên** | 23001837 |
 | **Email** | 23001837@hus.edu.vn |
 
 ---
 
-## 📂 Project Structure
+## 📂 Cấu Trúc Dự Án
 
 ```
-├── README.md                    # This file (Main overview)
-├── LICENSE                      # MIT License
-├── requirements.txt             # Dependencies (v2.1 Updated)
-├── SETUP_GUIDE.md              # Installation & execution guide (NEW)
-├── AUDIT_REPORT.md             # Quality assurance report (NEW)
-├── CHANGELOG.md                # Version history & fixes (NEW)
-├── FIXES_SUMMARY.md            # Summary of all fixes (NEW)
+├── README.md                    # File này (Tổng quan chính)
+├── LICENSE                      # Giấy phép MIT
+├── requirements.txt             # Các thư viện phụ thuộc (v2.1 Cập nhật)
 ├── .gitignore
 │
 ├── SOURCE/
-│   ├── brave9.ipynb            # Main notebook (36 cells, with fixes)
-│   ├── README.md               # Notebook guide
-│   └── StudentsPerformance.csv  # Dataset (1000 rows)
+│   ├── brave9.ipynb            # Notebook chính (37 cells, có sửa chữa)
+│   ├── README.md               # Hướng dẫn notebook
+│   └── StudentsPerformance.csv  # Bộ dữ liệu (1000 hàng)
 │
 ├── REPORT/
-│   ├── main.pdf                # Academic report (40+ pages)
-│   ├── main.tex                # LaTeX source
-│   ├── tailieu.bib             # Bibliography
-│   ├── hus.sty                 # HUS LaTeX style
-│   └── Sections/               # Report sections
-│       ├── 1-Title.tex         # Title page
-│       └── Images/             # Figures & charts
-│
-└── [DOCS/]                     # Optional documentation
-```
+│   ├── main.pdf                # Báo cáo học thuật (57 trang)
+│   ├── main.tex                # Mã nguồn LaTeX
+│   ├── tailieu.bib             # Tài liệu tham khảo
+│   ├── hus.sty                 # Kiểu LaTeX HUS
+│   └── Sections/               # Các phần của báo cáo
+│       ├── 1-Title.tex         # Trang bìa
+│       └── Images/             # Hình ảnh & biểu đồ
 
-**📌 NEW in v2.1:** 4 documentation files added for better quality assurance
+**📌 MỚI trong v2.1:** 4 file tài liệu được thêm vào để đảm bảo chất lượng
 
 ---
 
-## 🚀 Quick Start (5 minutes)
+## 🚀 Bắt Đầu Nhanh (5 phút)
 
-### Prerequisites
+### Yêu Cầu Tiên Quyết
 - Python 3.8+
 - Jupyter Notebook
 
-### Installation
+### Cài Đặt
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/Bravee9/student-performance-prediction.git
+git clone https://github.com/Bravee9/Student-Performance-Prediction-XGBoost.git
 
-# 2. Create & activate virtual environment
+# 2. Tạo & kích hoạt môi trường ảo
 python -m venv venv
 source venv/bin/activate        # Linux/macOS
-# or
+# hoặc
 venv\Scripts\activate            # Windows
 
-# 3. Install dependencies
+# 3. Cài đặt các thư viện
 pip install -r requirements.txt
 
-# 4. Run notebook
+# 4. Chạy notebook
 jupyter notebook SOURCE/brave9.ipynb
 
-# 5. View report
-# Open REPORT/main.pdf
+# 5. Xem báo cáo
+# Mở REPORT/main.pdf
 ```
 
 ---
 
-## 📊 Dataset
+## 📊 Bộ Dữ Liệu
 
-- **Source**: [Kaggle - Student Performance in Exams](https://www.kaggle.com/spscientist/students-performance-in-exams)
-- **Samples**: 1,000 students
-- **Features**: gender, race/ethnicity, parental education, lunch type, test prep, reading score, writing score
-- **Target**: math score (0-100)
-- **Quality**: No missing values
+- **Nguồn**: [Kaggle - Student Performance in Exams](https://www.kaggle.com/spscientist/students-performance-in-exams)
+- **Số Mẫu**: 1.000 học sinh
+- **Đặc Trưng**: giới tính, chủng tộc/dân tộc, trình độ học vấn cha mẹ, loại bữa trưa, luyện thi, điểm đọc, điểm viết
+- **Biến Mục Tiêu**: điểm toán (0-100)
+- **Chất Lượng**: Không có giá trị thiếu
 
 ---
 
-## 🤖 Models Compared
+## 🤖 Mô Hình So Sánh
 
-| Metric | Linear Regression | XGBoost | Winner |
+| Chỉ Số | Hồi Quy Tuyến Tính | XGBoost | Người Chiến Thắng |
 |--------|-------------------|---------|--------|
-| **R² Score** | 0.230 | 0.260 | XGBoost ✓ |
-| **RMSE** | 13.05 | 12.26 | XGBoost ✓ |
-| **MAE** | 10.24 | 9.87 | XGBoost ✓ |
+| **Điểm R²** | 0,230 | 0,260 | XGBoost ✓ |
+| **RMSE** | 13,05 | 12,26 | XGBoost ✓ |
+| **MAE** | 10,24 | 9,87 | XGBoost ✓ |
 
-**XGBoost Configuration**:
-- 100 trees, max_depth=5, learning_rate=0.1
-- Subsample=0.8, colsample_bytree=0.8
-
----
-
-## 💡 Key Insights
-
-### SES Impact
-Students with standard lunch score **10.2 points higher** than free/reduced lunch students (15% gap).
-
-### Education Gradient  
-Parental education shows linear relationship with math scores (**7.4 point spread** from HS to Master's).
-
-### Intervention Effect
-Test preparation courses show **5.0 point improvement**, demonstrating intervention effectiveness.
-
-### Policy Recommendations
-1. **Expand meal subsidy programs** (highest ROI)
-2. **Parent engagement programs** (family support)
-3. **Universalize test preparation** (skill building)
+**Cấu Hình XGBoost**:
+- 100 cây, max_depth=5, learning_rate=0,1
+- Subsample=0,8, colsample_bytree=0,8
 
 ---
 
-## 📈 Workflow
+## 💡 Những Hiểu Biết Chính
 
-```
-Data Loading → EDA → Preprocessing → Model Training → Evaluation → Feature Analysis
-```
+### Ảnh Hưởng của KXH
+Học sinh có bữa trưa bình thường đạt điểm toán **cao hơn 10,2 điểm** so với học sinh có bữa trưa miễn phí/giảm giá (chênh lệch 15%).
 
-**Notebook Sections**:
-1. Introduction & Task Description
-2. Library Setup
-3. Data Loading & Exploration
-4. Statistical Analysis (EDA)
-5. Data Preprocessing & Encoding
-6. Evaluation Metrics Function
-7. Linear Regression Baseline
-8. XGBoost Main Model
-9. Model Comparison
-10. Feature Importance Analysis
-11. Conclusions & Recommendations
+### Độ Dốc Giáo Dục  
+Trình độ học vấn cha mẹ cho thấy mối quan hệ tuyến tính với điểm toán (**chênh lệch 7,4 điểm** từ THPT đến Thạc sĩ).
+
+### Hiệu Ứng Can Thiệp
+Các khóa luyện thi cho thấy **cải thiện 5,0 điểm**, chứng tỏ hiệu quả của can thiệp.
+
+### Khuyến Nghị Chính Sách
+1. **Mở rộng chương trình hỗ trợ bữa ăn** (ROI cao nhất)
+2. **Chương trình tham gia cha mẹ** (hỗ trợ gia đình)
+3. **Phổ cập luyện thi** (xây dựng kỹ năng)
 
 ---
 
-## ⚙️ Technical Stack
+## 📈 Quy Trình Công Việc
 
 ```
-pandas==1.3.5           # Data manipulation
-numpy==1.21.6           # Numerical computing
-scikit-learn==1.0.2     # ML algorithms
-xgboost==1.5.2          # Gradient boosting
-matplotlib==3.5.1       # Visualization
-seaborn==0.11.2         # Statistical graphics
+Tải Dữ Liệu → EDA → Tiền Xử Lý → Huấn Luyện Mô Hình → Đánh Giá → Phân Tích Đặc Trưng
+```
+
+**Các Phần của Notebook**:
+1. Giới Thiệu & Mô Tả Nhiệm Vụ
+2. Thiết Lập Thư Viện
+3. Tải Dữ Liệu & Khám Phá
+4. Phân Tích Thống Kê (EDA)
+5. Tiền Xử Lý & Mã Hóa Dữ Liệu
+6. Hàm Chỉ Số Đánh Giá
+7. Cơ Sở Hồi Quy Tuyến Tính
+8. Mô Hình XGBoost Chính
+9. So Sánh Mô Hình
+10. Phân Tích Độ Quan Trọng Đặc Trưng
+11. Kết Luận & Khuyến Nghị
+
+---
+
+## ⚙️ Ngăn Xếp Công Nghệ
+
+```
+pandas==1.3.5           # Thao Tác Dữ Liệu
+numpy==1.21.6           # Tính Toán Số Học
+scikit-learn==1.0.2     # Các Thuật Toán ML
+xgboost==1.5.2          # Gradient Boosting
+matplotlib==3.5.1       # Trực Quan Hóa
+seaborn==0.11.2         # Đồ Thị Thống Kê
 jupyter==1.0.0          # Notebooks
 ```
 
 ---
 
-## 📚 Documentation
+## 📚 Tài Liệu
 
-- **SOURCE/README.md** - Cell-by-cell notebook explanation
-- **DOCS/SETUP.md** - Detailed installation & troubleshooting
-- **DOCS/EDA_SUMMARY.md** - Statistical findings & analysis
-- **REPORT/main.pdf** - Full academic report (40 pages, LaTeX)
+- **SOURCE/README.md** - Giải thích chi tiết từng cell của notebook
+- **REPORT/main.pdf** - Báo cáo học thuật đầy đủ (57 trang, LaTeX)
 
 ---
 
-## 👤 Author & Contact
+## 👤 Tác Giả & Liên Hệ
 
-| | Details |
+| | Chi Tiết |
 |---------|---------|
-| **Name** | Bùi Quang Chiến |
-| **ID** | 23001837 |
+| **Tên** | Bùi Quang Chiến |
+| **Mã Sinh Viên** | 23001837 |
 | **Email** | 23001837@hus.edu.vn |
 | **GitHub** | [@Bravee9](https://github.com/Bravee9) |
 | **Facebook** | [Bùi Quang Chiến](https://www.facebook.com/buiquangchienhus/) |
 
 ---
 
-## 📄 License & Citation
+## 📄 Giấy Phép & Trích Dẫn
 
-**License**: MIT (see [LICENSE](LICENSE))
+**Giấy Phép**: MIT (xem [LICENSE](LICENSE))
 
 ```bibtex
 @misc{StudentPerfPrediction2025,
   author = {Chiến, Bùi Quang},
-  title = {Student Performance Prediction using Machine Learning},
+  title = {Dự Đoán Kết Quả Học Tập Học Sinh Sử Dụng Học Máy},
   year = {2025},
-  school = {Hanoi University of Science},
+  school = {Đại Học Khoa Học Tự Nhiên, Hà Nội},
   publisher = {GitHub},
-  howpublished = {\url{https://github.com/Bravee9/student-performance-prediction}},
-  note = {Midterm Project MAT3533-1K68A3}
+  howpublished = {\url{https://github.com/Bravee9/Student-Performance-Prediction-XGBoost}},
+  note = {Dự Án Giữa Kỳ MAT3533-1K68A3}
 }
 ```
 
 ---
 
-## 🔗 References
+## 🔗 Tài Liệu Tham Khảo
 
 - Bourdieu, P. (1986). "The Forms of Capital"
 - Sirin, S. R. (2005). "Socioeconomic Status and Academic Achievement"
@@ -223,9 +214,9 @@ jupyter==1.0.0          # Notebooks
 
 <div align="center">
 
-**Last Updated**: November 2025  
-**Status**: ✅ Complete & Ready
+**Cập Nhật Lần Cuối**: Tháng 11 năm 2025  
+**Trạng Thái**: ✅ Hoàn Thành & Sẵn Sàng
 
-⭐ **If helpful, please star the repository!** ⭐
+⭐ **Nếu thấy hữu ích, vui lòng đánh dấu sao cho repository!** ⭐
 
 </div>
