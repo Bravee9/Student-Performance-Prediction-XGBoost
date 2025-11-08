@@ -101,7 +101,7 @@ jupyter notebook SOURCE/brave9.ipynb
 
 ## 🤖 Mô Hình So Sánh
 
-| Chỉ Số | Hồi Quy Tuyến Tính | XGBoost | Người Chiến Thắng |
+| Chỉ Số | Hồi Quy Tuyến Tính | XGBoost | Mô hình tốt nhất |
 |--------|-------------------|---------|--------|
 | **Điểm R²** | 0,230 | 0,260 | XGBoost ✓ |
 | **RMSE** | 13,05 | 12,26 | XGBoost ✓ |
