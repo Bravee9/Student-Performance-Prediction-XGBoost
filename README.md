@@ -60,7 +60,7 @@ A comprehensive machine learning project that predicts student mathematics achie
 │   └── StudentsPerformance.csv  # Dataset (1,000 students)
 │
 ├── REPORT/
-│   ├── main.pdf                # Academic report (57 pages, LaTeX)
+│   ├── main.pdf                # Academic report (60 pages, LaTeX)
 │   ├── main.tex                # LaTeX source
 │   ├── tailieu.bib             # Bibliography
 │   ├── hus.sty                 # HUS LaTeX style
@@ -304,7 +304,7 @@ Một dự án học máy toàn diện dự đoán thành tích toán học củ
 │   └── StudentsPerformance.csv  # Bộ dữ liệu (1.000 học sinh)
 │
 ├── REPORT/
-│   ├── main.pdf                # Báo cáo học thuật (57 trang, LaTeX)
+│   ├── main.pdf                # Báo cáo học thuật (60 trang, LaTeX)
 │   ├── main.tex                # Mã nguồn LaTeX
 │   ├── tailieu.bib             # Tài liệu tham khảo
 │   ├── hus.sty                 # Kiểu LaTeX HUS
