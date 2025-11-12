@@ -1,6 +1,4 @@
 # Student Performance Prediction - Machine Learning
-# Dự Đoán Kết Quả Học Tập của Học Sinh - Học Máy
-
 > XGBoost Regression for Predicting Student Math Achievement
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)](https://www.python.org/)
@@ -265,7 +263,7 @@ scipy==1.11.1           # Scientific computing
 # VIETNAMESE VERSION
 
 # Dự Đoán Kết Quả Học Tập của Học Sinh - Học Máy
-# Hồi Quy XGBoost để Dự Đoán Thành Tích Toán của Học Sinh
+> Hồi Quy XGBoost để Dự Đoán Thành Tích Toán của Học Sinh
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
