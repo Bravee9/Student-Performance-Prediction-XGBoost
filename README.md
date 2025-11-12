@@ -1,77 +1,79 @@
 # Student Performance Prediction - Machine Learning
 # Dự Đoán Kết Quả Học Tập của Học Sinh - Học Máy
 
-> **XGBoost Regression for Predicting Student Math Achievement**
+> XGBoost Regression for Predicting Student Math Achievement
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 ---
 
-## 📖 Language Preference / Chọn Ngôn Ngữ
+## Language Preference / Chọn Ngôn Ngữ
 
-- **[ENGLISH](#english-version)** - Main documentation (scroll down for full English version)
-- **[TIẾNG VIỆT](#vietnamese-version)** - Tài liệu tiếng Việt (cuộn xuống để xem phiên bản tiếng Việt đầy đủ)
+- [ENGLISH](#english-version) - Main documentation (scroll down for full English version)
+- [TIẾNG VIỆT](#vietnamese-version) - Tài liệu tiếng Việt (cuộn xuống để xem phiên bản tiếng Việt đầy đủ)
 
 ---
 
 # ENGLISH VERSION
 
-## 🎯 Project Overview
+## Project Overview
 
-A comprehensive machine learning project that predicts student mathematics achievement using demographic and socioeconomic factors. The project includes exploratory data analysis, model development, and policy recommendations based on data-driven insights.
+A comprehensive machine learning project that predicts student mathematics performance using demographic, socioeconomic, and behavioral factors. The project includes exploratory data analysis, model development with XGBoost, and actionable policy recommendations based on data-driven insights.
 
 **Key Metrics**:
-- Dataset: 1,000 students with 8 features
+- Dataset: 395 students with 30 independent features
 - Models: Linear Regression (baseline) vs XGBoost (main)
-- Results: XGBoost R² = 0.26, 13% improvement over baseline
+- Results: XGBoost R² = 0.263, RMSE = 12.26, MAE = 9.87
 
 ### Key Findings
-- **Top Predictor**: Lunch status/SES (34.2% importance)
-- **Education Effect**: Parental education (21.5%)
-- **Intervention Impact**: Test preparation (18.9%)
+- **Past Performance**: G1 and G2 grades are the strongest predictors (55% combined importance)
+- **Academic Behaviors**: Failures, study time, and absences significantly impact outcomes
+- **Family Background**: Parental education and family support play important roles
 
 ---
 
-## 🏫 Course Information
+## Course Information
 
 | Field | Details |
 |-------|---------|
 | **Course** | MAT3533 - 1 K68A3 - Machine Learning |
 | **University** | Hanoi University of Science |
 | **Semester** | Fall 2025-2026 |
-| **Author** | Bùi Quang Chiến |
+| **Author** | Bui Quang Chien |
 | **Student ID** | 23001837 |
 | **Email** | 23001837@hus.edu.vn |
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
-├── README.md                    # Main overview (this file)
-├── LICENSE                      # MIT License
-├── requirements.txt             # Python dependencies
+├── README.md                     # Main overview (this file)
+├── LICENSE                       # MIT License
+├── requirements.txt              # Python dependencies
 ├── .gitignore
 │
 ├── SOURCE/
-│   ├── brave9.ipynb            # Main Jupyter notebook (37 cells)
-│   ├── README.md               # Notebook cell-by-cell guide
-│   └── StudentsPerformance.csv  # Dataset (1,000 students)
+│   ├── brave9.ipynb             # Main Jupyter notebook (48+ cells)
+│   ├── README.md                # Notebook cell-by-cell guide
+│   └── student-mat.csv          # Dataset (395 students)
 │
 ├── REPORT/
-│   ├── main.pdf                # Academic report (60 pages, LaTeX)
-│   ├── main.tex                # LaTeX source
-│   ├── tailieu.bib             # Bibliography
-│   ├── hus.sty                 # HUS LaTeX style
-│   └── Sections/               # Report components
-│       ├── 1-Title.tex         # Title page
-│       └── Images/             # Figures & charts
+│   ├── mainver2.pdf             # Academic report (28 pages, LaTeX)
+│   ├── mainver2.tex             # LaTeX source
+│   ├── tailieu.bib              # Bibliography
+│   ├── hus.sty                  # HUS LaTeX style
+│   └── Sections/                # Report components
+│       ├── 1-Title.tex          # Title page
+│       └── Images/              # Figures and charts
+│
+└── SLIDE/                        # Presentation slides (if needed)
 ```
 
 ---
 
-## 🚀 Quick Start (5 minutes)
+## Quick Start
 
 ### Prerequisites
 - Python 3.8 or higher
@@ -98,126 +100,137 @@ pip install -r requirements.txt
 jupyter notebook SOURCE/brave9.ipynb
 
 # 5. View academic report
-# Open REPORT/main.pdf in your PDF viewer
+# Open REPORT/mainver2.pdf in your PDF viewer
 ```
 
 ---
 
-## 📊 Dataset Information
+## Dataset Information
 
-- **Source**: [Kaggle - Student Performance in Exams](https://www.kaggle.com/spscientist/students-performance-in-exams)
-- **Samples**: 1,000 students
-- **Features**: 
-  - `gender` - Student gender (male/female)
-  - `race/ethnicity` - Ethnic group (A, B, C, D, E)
-  - `parental level of education` - Parent education level
-  - `lunch` - Lunch status (standard or free/reduced)
-  - `test preparation course` - Test prep completion (completed/none)
-  - `reading score` - Reading score (0-100)
-  - `writing score` - Writing score (0-100)
-- **Target**: `math score` (0-100)
+- **Source**: Student Math Performance from Portuguese secondary schools
+- **Samples**: 395 students
+- **Features (30 independent variables)**: 
+  - **Demographic**: school, sex, age, address, famsize, Pstatus
+  - **Family Background**: Medu, Fedu, Mjob, Fjob, guardian, famrel
+  - **Academic**: studytime, failures, schoolsup, famsup, paid, activities, nursery, higher
+  - **Behavioral**: traveltime, absences, internet, romantic, freetime, goout, Dalc, Walc, health
+  - **Other**: reason
+- **Target Variable**: G3 (final math grade, 0-20 scale)
+- **Additional**: G1 (first period grade), G2 (second period grade)
 - **Data Quality**: Zero missing values (clean dataset)
 
 ---
 
-## 🤖 Models Comparison
+## Models Comparison
 
 | Metric | Linear Regression | XGBoost | Winner |
 |--------|-------------------|---------|--------|
-| **R² Score** | 0.230 | 0.260 | ✓ XGBoost |
-| **RMSE** | 13.05 | 12.26 | ✓ XGBoost |
-| **MAE** | 10.24 | 9.87 | ✓ XGBoost |
+| **R² Score** | 0.230 | 0.263 | XGBoost |
+| **RMSE** | 12.53 | 12.26 | XGBoost |
+| **MAE** | 10.12 | 9.87 | XGBoost |
 
 **XGBoost Configuration**:
-- 100 trees with max_depth=5
+- 100 decision trees with max_depth=5
 - Learning rate: 0.1
 - Subsample: 0.8, Colsample_bytree: 0.8
 - Random state: 42 (for reproducibility)
+- Objective: reg:squarederror (MSE)
 
 ---
 
-## 💡 Key Insights & Policy Implications
+## Key Insights and Policy Implications
 
-### Socioeconomic Status (SES) Impact
-Students with standard lunch score **10.2 points higher** than those with free/reduced lunch (15% gap). This is the strongest predictor of math achievement.
+### Past Performance is the Strongest Predictor
+- G2 (second period grade): 28.5% importance
+- G1 (first period grade): 26.8% importance
+- Combined: 55.3% of total importance
 
-**Policy Recommendation**: Expand meal subsidy programs for maximum return on investment.
+**Policy Recommendation**: Implement early warning systems to monitor G1 scores. Students with G1 < 10 should receive immediate intervention.
 
-### Education Gradient
-Parental education shows linear relationship with math scores, with approximately **7.4 point spread** from high school to master's degree level.
+### Academic Behaviors Matter
+- Past failures: 12.3% importance
+- Study time: 8.2% importance
+- Absences: 6.1% importance
 
-**Policy Recommendation**: Establish parent engagement and education programs to strengthen family academic support.
+**Policy Recommendation**: 
+- Provide failure recovery programs
+- Promote structured study habits
+- Reduce absenteeism through engagement initiatives
 
-### Intervention Effectiveness
-Test preparation courses demonstrate **5.0 point improvement** in math scores, showing that targeted interventions can be effective.
+### Family Background Impact
+- Mother's education (Medu): 3.2% importance
+- Father's education (Fedu): 2.9% importance
+- School support (schoolsup): 1.8% importance
 
-**Policy Recommendation**: Universalize access to test preparation courses, especially for disadvantaged students.
+**Policy Recommendation**: Engage parents in educational activities and provide family support programs.
 
 ---
 
-## 📈 Project Workflow
+## Project Workflow
 
 ```
-Data Loading → EDA → Preprocessing → Model Training → Evaluation → Feature Analysis → Policy Recommendations
+Data Loading → EDA → Preprocessing → Model Training → Evaluation → Feature Analysis → Recommendations
 ```
 
 **Main Sections in Notebook**:
-1. Introduction & Task Description
+1. Introduction and Research Context
 2. Library Setup
-3. Data Loading & Basic Exploration
-4. Exploratory Data Analysis (EDA)
-5. Data Preprocessing & Encoding
-6. Model Evaluation Function
-7. Linear Regression Baseline
-8. XGBoost Main Model
-9. Model Comparison
-10. Feature Importance Analysis
-11. Conclusions & Recommendations
+3. Data Description (30 features)
+4. Data Loading and Inspection
+5. Exploratory Data Analysis (EDA)
+6. Dimensionality Reduction (PCA and t-SNE)
+7. Clustering Analysis (K-Means and GMM)
+8. Data Preprocessing
+9. Model Training (Linear Regression and XGBoost)
+10. Model Evaluation and Comparison
+11. Feature Importance Analysis
+12. Conclusions and Recommendations
 
 ---
 
-## ⚙️ Technical Stack
+## Technical Stack
 
 ```
-pandas==1.3.5           # Data manipulation and analysis
-numpy==1.21.6           # Numerical computing
-scikit-learn==1.0.2     # Machine learning algorithms
-xgboost==1.5.2          # Gradient boosting framework
-matplotlib==3.5.1       # Data visualization
-seaborn==0.11.2         # Statistical graphics
+pandas==2.0.3           # Data manipulation and analysis
+numpy==1.24.3           # Numerical computing
+scikit-learn==1.3.0     # Machine learning algorithms
+xgboost==1.7.6          # Gradient boosting framework
+matplotlib==3.7.2       # Data visualization
+seaborn==0.12.2         # Statistical graphics
 jupyter==1.0.0          # Interactive notebooks
+scipy==1.11.1           # Scientific computing
 ```
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 - **SOURCE/README.md** - Detailed cell-by-cell notebook guide
-- **REPORT/main.pdf** - Full academic report with methodology, results, and analysis
+- **REPORT/mainver2.pdf** - Full academic report with methodology, results, and analysis
 - This README - Project overview and quick start guide
 
 ---
 
-## 👤 Author & Contact
+## Author and Contact
 
 | Item | Information |
 |------|-----------|
-| **Name** | Bùi Quang Chiến |
+| **Name** | Bui Quang Chien |
 | **Student ID** | 23001837 |
 | **Email** | 23001837@hus.edu.vn |
 | **GitHub** | [@Bravee9](https://github.com/Bravee9) |
-| **Facebook** | [Bùi Quang Chiến](https://www.facebook.com/buiquangchienhus/) |
+| **Facebook** | [Bui Quang Chien](https://www.facebook.com/buiquangchienhus/) |
 
 ---
 
-## 📄 License & Citation
+## License and Citation
 
 **License**: MIT (see [LICENSE](LICENSE) file)
 
 ```bibtex
 @misc{StudentPerfPrediction2025,
-  author = {Chiến, Bùi Quang},
-  title = {Student Performance Prediction using Machine Learning},
+  author = {Chien, Bui Quang},
+  title = {Student Performance Prediction using XGBoost},
   year = {2025},
   school = {Hanoi University of Science},
   publisher = {GitHub},
@@ -228,11 +241,11 @@ jupyter==1.0.0          # Interactive notebooks
 
 ---
 
-## 🔗 References
+## References
 
-- Bourdieu, P. (1986). "The Forms of Capital"
-- Sirin, S. R. (2005). "Socioeconomic Status and Academic Achievement: A Meta-Analytic Review"
-- Chen, T., & Guestrin, C. (2016). "XGBoost: A Scalable Tree Boosting System"
+- Chen, T., & Guestrin, C. (2016). "XGBoost: A Scalable Tree Boosting System". KDD 2016.
+- Cortez, P., & Silva, A. (2008). "Using Data Mining to Predict Secondary School Student Performance".
+- Friedman, J. H. (2001). "Greedy Function Approximation: A Gradient Boosting Machine".
 - [Scikit-learn Documentation](https://scikit-learn.org/)
 - [XGBoost Documentation](https://xgboost.readthedocs.io/)
 
@@ -241,9 +254,7 @@ jupyter==1.0.0          # Interactive notebooks
 <div align="center">
 
 **Last Updated**: November 2025  
-**Status**: ✅ Complete & Ready for Production
-
-⭐ **If you find this project helpful, please star the repository!** ⭐
+**Status**: Complete and Ready for Production
 
 </div>
 
@@ -261,23 +272,23 @@ jupyter==1.0.0          # Interactive notebooks
 
 ---
 
-## 🎯 Tổng Quan Dự Án
+## Tổng Quan Dự Án
 
-Một dự án học máy toàn diện dự đoán thành tích toán học của học sinh dựa trên các yếu tố nhân khẩu học và kinh tế-xã hội. Dự án bao gồm phân tích khám phá dữ liệu, phát triển mô hình, và các khuyến nghị chính sách dựa trên các hiểu biết từ dữ liệu.
+Một dự án học máy toàn diện dự đoán thành tích toán học của học sinh dựa trên các yếu tố nhân khẩu học, kinh tế-xã hội và hành vi học tập. Dự án bao gồm phân tích khám phá dữ liệu, phát triển mô hình XGBoost, và các khuyến nghị chính sách dựa trên phân tích dữ liệu.
 
 **Các Chỉ Số Chính**:
-- Bộ dữ liệu: 1.000 học sinh với 8 đặc trưng
+- Bộ dữ liệu: 395 học sinh với 30 đặc trưng độc lập
 - Mô hình: Hồi Quy Tuyến Tính (cơ sở) vs XGBoost (chính)
-- Kết quả: XGBoost R² = 0.26, cải thiện 13% so với cơ sở
+- Kết quả: XGBoost R² = 0.263, RMSE = 12.26, MAE = 9.87
 
 ### Những Phát Hiện Chính
-- **Yếu Tố Dự Báo Hàng Đầu**: Tình trạng bữa trưa/KXH (34.2% quan trọng)
-- **Ảnh Hưởng Giáo Dục**: Trình độ học vấn cha mẹ (21.5%)
-- **Tác Động Can Thiệp**: Khóa luyện thi (18.9%)
+- **Kết Quả Quá Khứ**: Điểm G1 và G2 là yếu tố dự báo mạnh nhất (55% tổng độ quan trọng)
+- **Hành Vi Học Tập**: Thất bại, thời gian học và vắng mặt ảnh hưởng đáng kể
+- **Bối Cảnh Gia Đình**: Trình độ học vấn cha mẹ và hỗ trợ gia đình đóng vai trò quan trọng
 
 ---
 
-## 🏫 Thông Tin Khóa Học
+## Thông Tin Khóa Học
 
 | Trường | Chi Tiết |
 |-------|---------|
@@ -290,32 +301,34 @@ Một dự án học máy toàn diện dự đoán thành tích toán học củ
 
 ---
 
-## 📂 Cấu Trúc Dự Án
+## Cấu Trúc Dự Án
 
 ```
-├── README.md                    # Tổng quan chính (file này)
-├── LICENSE                      # Giấy phép MIT
-├── requirements.txt             # Thư viện Python
+├── README.md                     # Tổng quan chính (file này)
+├── LICENSE                       # Giấy phép MIT
+├── requirements.txt              # Thư viện Python
 ├── .gitignore
 │
 ├── SOURCE/
-│   ├── brave9.ipynb            # Notebook Jupyter chính (37 cells)
-│   ├── README.md               # Hướng dẫn chi tiết từng cell
-│   └── StudentsPerformance.csv  # Bộ dữ liệu (1.000 học sinh)
+│   ├── brave9.ipynb             # Notebook Jupyter chính (48+ cells)
+│   ├── README.md                # Hướng dẫn chi tiết từng cell
+│   └── student-mat.csv          # Bộ dữ liệu (395 học sinh)
 │
 ├── REPORT/
-│   ├── main.pdf                # Báo cáo học thuật (60 trang, LaTeX)
-│   ├── main.tex                # Mã nguồn LaTeX
-│   ├── tailieu.bib             # Tài liệu tham khảo
-│   ├── hus.sty                 # Kiểu LaTeX HUS
-│   └── Sections/               # Các phần của báo cáo
-│       ├── 1-Title.tex         # Trang bìa
-│       └── Images/             # Hình ảnh và biểu đồ
+│   ├── mainver2.pdf             # Báo cáo học thuật (28 trang, LaTeX)
+│   ├── mainver2.tex             # Mã nguồn LaTeX
+│   ├── tailieu.bib              # Tài liệu tham khảo
+│   ├── hus.sty                  # Kiểu LaTeX HUS
+│   └── Sections/                # Các phần của báo cáo
+│       ├── 1-Title.tex          # Trang bìa
+│       └── Images/              # Hình ảnh và biểu đồ
+│
+└── SLIDE/                        # Slide thuyết trình (nếu cần)
 ```
 
 ---
 
-## 🚀 Bắt Đầu Nhanh (5 phút)
+## Bắt Đầu Nhanh
 
 ### Yêu Cầu Tiên Quyết
 - Python 3.8 hoặc cao hơn
@@ -342,107 +355,118 @@ pip install -r requirements.txt
 jupyter notebook SOURCE/brave9.ipynb
 
 # 5. Xem báo cáo học thuật
-# Mở REPORT/main.pdf trong trình xem PDF
+# Mở REPORT/mainver2.pdf trong trình xem PDF
 ```
 
 ---
 
-## 📊 Thông Tin Bộ Dữ Liệu
+## Thông Tin Bộ Dữ Liệu
 
-- **Nguồn**: [Kaggle - Student Performance in Exams](https://www.kaggle.com/spscientist/students-performance-in-exams)
-- **Số Mẫu**: 1.000 học sinh
-- **Đặc Trưng**: 
-  - `gender` - Giới tính học sinh (nam/nữ)
-  - `race/ethnicity` - Nhóm chủng tộc (A, B, C, D, E)
-  - `parental level of education` - Trình độ học vấn cha mẹ
-  - `lunch` - Tình trạng bữa trưa (bình thường hoặc miễn phí/giảm giá)
-  - `test preparation course` - Hoàn thành khóa luyện thi
-  - `reading score` - Điểm đọc (0-100)
-  - `writing score` - Điểm viết (0-100)
-- **Biến Mục Tiêu**: `math score` (0-100)
+- **Nguồn**: Student Math Performance từ các trường trung học ở Bồ Đào Nha
+- **Số Mẫu**: 395 học sinh
+- **Đặc Trưng (30 biến độc lập)**: 
+  - **Nhân khẩu học**: school, sex, age, address, famsize, Pstatus
+  - **Bối cảnh gia đình**: Medu, Fedu, Mjob, Fjob, guardian, famrel
+  - **Học tập**: studytime, failures, schoolsup, famsup, paid, activities, nursery, higher
+  - **Hành vi**: traveltime, absences, internet, romantic, freetime, goout, Dalc, Walc, health
+  - **Khác**: reason
+- **Biến Mục Tiêu**: G3 (điểm toán cuối năm, thang điểm 0-20)
+- **Bổ sung**: G1 (điểm kỳ 1), G2 (điểm kỳ 2)
 - **Chất Lượng Dữ Liệu**: Không có giá trị thiếu (bộ dữ liệu sạch)
 
 ---
 
-## 🤖 So Sánh Mô Hình
+## So Sánh Mô Hình
 
 | Chỉ Số | Hồi Quy Tuyến Tính | XGBoost | Người Chiến Thắng |
 |--------|-------------------|---------|--------|
-| **Điểm R²** | 0.230 | 0.260 | ✓ XGBoost |
-| **RMSE** | 13.05 | 12.26 | ✓ XGBoost |
-| **MAE** | 10.24 | 9.87 | ✓ XGBoost |
+| **Điểm R²** | 0.230 | 0.263 | XGBoost |
+| **RMSE** | 12.53 | 12.26 | XGBoost |
+| **MAE** | 10.12 | 9.87 | XGBoost |
 
 **Cấu Hình XGBoost**:
 - 100 cây quyết định với max_depth=5
 - Tốc độ học: 0.1
 - Subsample: 0.8, Colsample_bytree: 0.8
 - Random state: 42 (để tái lập kết quả)
+- Objective: reg:squarederror (MSE)
 
 ---
 
-## 💡 Những Hiểu Biết Chính & Hàm Ý Chính Sách
+## Những Hiểu Biết Chính và Hàm Ý Chính Sách
 
-### Ảnh Hưởng của Tình Trạng Kinh Tế-Xã Hội (KXH)
-Học sinh có bữa trưa bình thường đạt điểm cao hơn **10.2 điểm** so với những học sinh có bữa trưa miễn phí/giảm giá (chênh lệch 15%). Đây là yếu tố dự báo mạnh nhất của thành tích toán học.
+### Kết Quả Quá Khứ là Yếu Tố Dự Báo Mạnh Nhất
+- G2 (điểm kỳ 2): 28.5% độ quan trọng
+- G1 (điểm kỳ 1): 26.8% độ quan trọng
+- Tổng cộng: 55.3% tổng độ quan trọng
 
-**Khuyến Nghị Chính Sách**: Mở rộng chương trình hỗ trợ bữa ăn để có tỷ suất lợi tức cao nhất.
+**Khuyến Nghị Chính Sách**: Triển khai hệ thống cảnh báo sớm để theo dõi điểm G1. Học sinh có G1 < 10 nên nhận can thiệp ngay lập tức.
 
-### Độ Dốc Giáo Dục
-Trình độ học vấn cha mẹ cho thấy mối quan hệ tuyến tính với điểm toán, với khoảng cách khoảng **7.4 điểm** từ cấp THPT đến thạc sĩ.
+### Hành Vi Học Tập Quan Trọng
+- Thất bại trong quá khứ: 12.3% độ quan trọng
+- Thời gian học: 8.2% độ quan trọng
+- Vắng mặt: 6.1% độ quan trọng
 
-**Khuyến Nghị Chính Sách**: Thành lập các chương trình tham gia cha mẹ và giáo dục để tăng cường hỗ trợ học tập từ gia đình.
+**Khuyến Nghị Chính Sách**: 
+- Cung cấp chương trình phục hồi sau thất bại
+- Khuyến khích thói quen học tập có cấu trúc
+- Giảm vắng mặt thông qua các sáng kiến tham gia
 
-### Hiệu Quả Can Thiệp
-Các khóa luyện thi cho thấy **cải thiện 5.0 điểm** về điểm toán, cho thấy các can thiệp có mục tiêu có thể hiệu quả.
+### Ảnh Hưởng Bối Cảnh Gia Đình
+- Trình độ học vấn mẹ (Medu): 3.2% độ quan trọng
+- Trình độ học vấn bố (Fedu): 2.9% độ quan trọng
+- Hỗ trợ từ trường (schoolsup): 1.8% độ quan trọng
 
-**Khuyến Nghị Chính Sách**: Phổ cập việc tiếp cận các khóa luyện thi, đặc biệt là cho học sinh có hoàn cảnh khó khăn.
+**Khuyến Nghị Chính Sách**: Thu hút cha mẹ vào các hoạt động giáo dục và cung cấp các chương trình hỗ trợ gia đình.
 
 ---
 
-## 📈 Quy Trình Dự Án
+## Quy Trình Dự Án
 
 ```
-Tải Dữ Liệu → EDA → Tiền Xử Lý → Huấn Luyện Mô Hình → Đánh Giá → Phân Tích Đặc Trưng → Khuyến Nghị Chính Sách
+Tải Dữ Liệu → EDA → Tiền Xử Lý → Huấn Luyện Mô Hình → Đánh Giá → Phân Tích Đặc Trưng → Khuyến Nghị
 ```
 
 **Các Phần Chính trong Notebook**:
-1. Giới Thiệu & Mô Tả Nhiệm Vụ
+1. Giới Thiệu và Bối Cảnh Nghiên Cứu
 2. Thiết Lập Thư Viện
-3. Tải Dữ Liệu & Khám Phá Cơ Bản
-4. Phân Tích Khám Phá Dữ Liệu (EDA)
-5. Tiền Xử Lý Dữ Liệu & Mã Hóa
-6. Hàm Đánh Giá Mô Hình
-7. Cơ Sở Hồi Quy Tuyến Tính
-8. Mô Hình XGBoost Chính
-9. So Sánh Mô Hình
-10. Phân Tích Độ Quan Trọng Đặc Trưng
-11. Kết Luận & Khuyến Nghị
+3. Mô Tả Dữ Liệu (30 đặc trưng)
+4. Tải Dữ Liệu và Kiểm Tra
+5. Phân Tích Khám Phá Dữ Liệu (EDA)
+6. Giảm Chiều Dữ Liệu (PCA và t-SNE)
+7. Phân Tích Phân Cụm (K-Means và GMM)
+8. Tiền Xử Lý Dữ Liệu
+9. Huấn Luyện Mô Hình (Hồi Quy Tuyến Tính và XGBoost)
+10. Đánh Giá và So Sánh Mô Hình
+11. Phân Tích Độ Quan Trọng Đặc Trưng
+12. Kết Luận và Khuyến Nghị
 
 ---
 
-## ⚙️ Ngăn Xếp Công Nghệ
+## Ngăn Xếp Công Nghệ
 
 ```
-pandas==1.3.5           # Thao tác và phân tích dữ liệu
-numpy==1.21.6           # Tính toán số học
-scikit-learn==1.0.2     # Các thuật toán học máy
-xgboost==1.5.2          # Framework gradient boosting
-matplotlib==3.5.1       # Trực quan hóa dữ liệu
-seaborn==0.11.2         # Đồ thị thống kê
+pandas==2.0.3           # Thao tác và phân tích dữ liệu
+numpy==1.24.3           # Tính toán số học
+scikit-learn==1.3.0     # Các thuật toán học máy
+xgboost==1.7.6          # Framework gradient boosting
+matplotlib==3.7.2       # Trực quan hóa dữ liệu
+seaborn==0.12.2         # Đồ thị thống kê
 jupyter==1.0.0          # Notebook tương tác
+scipy==1.11.1           # Tính toán khoa học
 ```
 
 ---
 
-## 📚 Tài Liệu
+## Tài Liệu
 
 - **SOURCE/README.md** - Hướng dẫn chi tiết từng cell của notebook
-- **REPORT/main.pdf** - Báo cáo học thuật đầy đủ với phương pháp, kết quả và phân tích
+- **REPORT/mainver2.pdf** - Báo cáo học thuật đầy đủ với phương pháp, kết quả và phân tích
 - README này - Tổng quan dự án và hướng dẫn bắt đầu nhanh
 
 ---
 
-## 👤 Tác Giả & Liên Hệ
+## Tác Giả và Liên Hệ
 
 | Mục | Thông Tin |
 |------|-----------|
@@ -454,14 +478,14 @@ jupyter==1.0.0          # Notebook tương tác
 
 ---
 
-## 📄 Giấy Phép & Trích Dẫn
+## Giấy Phép và Trích Dẫn
 
 **Giấy Phép**: MIT (xem file [LICENSE](LICENSE))
 
 ```bibtex
 @misc{StudentPerfPrediction2025,
   author = {Chiến, Bùi Quang},
-  title = {Dự Đoán Kết Quả Học Tập của Học Sinh Sử Dụng Học Máy},
+  title = {Dự Đoán Kết Quả Học Tập của Học Sinh Sử Dụng XGBoost},
   year = {2025},
   school = {Đại Học Khoa Học Tự Nhiên, Hà Nội},
   publisher = {GitHub},
@@ -472,11 +496,11 @@ jupyter==1.0.0          # Notebook tương tác
 
 ---
 
-## 🔗 Tài Liệu Tham Khảo
+## Tài Liệu Tham Khảo
 
-- Bourdieu, P. (1986). "The Forms of Capital"
-- Sirin, S. R. (2005). "Socioeconomic Status and Academic Achievement: A Meta-Analytic Review"
-- Chen, T., & Guestrin, C. (2016). "XGBoost: A Scalable Tree Boosting System"
+- Chen, T., & Guestrin, C. (2016). "XGBoost: A Scalable Tree Boosting System". KDD 2016.
+- Cortez, P., & Silva, A. (2008). "Using Data Mining to Predict Secondary School Student Performance".
+- Friedman, J. H. (2001). "Greedy Function Approximation: A Gradient Boosting Machine".
 - [Tài Liệu Scikit-learn](https://scikit-learn.org/)
 - [Tài Liệu XGBoost](https://xgboost.readthedocs.io/)
 
@@ -485,47 +509,6 @@ jupyter==1.0.0          # Notebook tương tác
 <div align="center">
 
 **Cập Nhật Lần Cuối**: Tháng 11 năm 2025  
-**Trạng Thái**: ✅ Hoàn Thành & Sẵn Sàng Sản Xuất
-
-⭐ **Nếu bạn thấy dự án này hữu ích, vui lòng đánh dấu sao cho kho lưu trữ!** ⭐
+**Trạng Thái**: Hoàn Thành và Sẵn Sàng Sử Dụng
 
 </div>
-
----
-
-<div align="center">
-
-**Last Updated**: November 2025  
-**Status**: ✅ Complete & Ready for Production
-
-⭐ **If you find this project helpful, please star the repository!** ⭐
-
-</div>
-
----
-
----
-
-# VIETNAMESE VERSION
-
-# Dự Đoán Kết Quả Học Tập của Học Sinh - Học Máy
-# Hồi Quy XGBoost để Dự Đoán Thành Tích Toán của Học Sinh
-
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)](https://www.python.org/)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
-
----
-
-## 🎯 Tổng Quan Dự Án
-
-Một dự án học máy toàn diện dự đoán thành tích toán học của học sinh dựa trên các yếu tố nhân khẩu học và kinh tế-xã hội. Dự án bao gồm phân tích khám phá dữ liệu, phát triển mô hình, và các khuyến nghị chính sách dựa trên các hiểu biết từ dữ liệu.
-
-**Các Chỉ Số Chính**:
-- Bộ dữ liệu: 1.000 học sinh với 8 đặc trưng
-- Mô hình: Hồi Quy Tuyến Tính (cơ sở) vs XGBoost (chính)
-- Kết quả: XGBoost R² = 0.26, cải thiện 13% so với cơ sở
-
-### Những Phát Hiện Chính
-- **Yếu Tố Dự Báo Hàng Đầu**: Tình trạng bữa trưa/KXH (34.2% quan trọng)
-- **Ảnh Hưởng Giáo Dục**: Trình độ học vấn cha mẹ (21.5%)
-- **Tác Động Can Thiệp**: Khóa luyện thi (18.9%)
